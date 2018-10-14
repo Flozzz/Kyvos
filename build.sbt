@@ -1,10 +1,11 @@
-import sbt.Keys.{libraryDependencies, _}
 
-name := "KyvosGatling"
+name := "Kyvos"
 
-version := "0.1"
+version := "0.2"
 
 scalaVersion := "2.12.7"
+
+val http4sVersion = "0.18.19"
 
 /*
 resolvers in ThisBuild ++= Seq(
@@ -14,8 +15,10 @@ resolvers in ThisBuild ++= Seq(
 lazy val root = (project in file("."))
   .settings(
     publishArtifact := false,
-//    libraryDependencies += "org.apache.hive" % "hive-jdbc" % "3.1.0",
-    libraryDependencies += "org.apache.logging.log4j" % "log4j" % "1.2.17"
-  /* libraryDependencies += "org.slf4j" % "slf4j-api" % "1.7.25",
-    libraryDependencies += "org.slf4j" % "slf4j-log4j12" % "1.7.25" % Test*/
+    libraryDependencies++=Seq("org.http4s" %% "http4s-dsl" % http4sVersion,
+    "org.http4s" %% "http4s-blaze-server" % http4sVersion,
+    "org.http4s" %% "http4s-blaze-client" % http4sVersion),
+    scalacOptions ++= Seq("-Ypartial-unification")
   )
+
+

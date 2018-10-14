@@ -1,3 +1,4 @@
+import cats.effect._, org.http4s._, org.http4s.dsl.io._, scala.concurrent.ExecutionContext.Implicits.global
 import java.sql.{Connection, DriverManager}
 
 import scala.util.Try
